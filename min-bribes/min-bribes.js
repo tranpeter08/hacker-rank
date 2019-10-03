@@ -51,6 +51,6 @@ function minBribes(q) {
   // }
 }
 
-minBribes([2,3,5,1,4])
+minBribes([1, 2, 5, 3, 7, 8, 6, 4])
 
 module.exports = minBribes;
