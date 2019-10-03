@@ -1,36 +1,56 @@
 function minBribes(q) {
-  const bribes = {};
-  let sorting = true;
-  while (sorting) {
-    sorting = false;
-    for (let i = 0; i < q.length - 1; i++) {
-      if (q[i] > q[i + 1]) {
-        sorting = true;
-        if (!bribes[q[i]]) {
-          bribes[q[i]] = 1;
-        } else {
-          bribes[q[i]]++;
-        }
+  let bribes = 0;
 
-        [q[i], q[i + 1]] = [q[i + 1], q[i]];
-      }
+  for (let i = 0; i < q.length ; i++) {
+    if (q[i] > q[i + 1] && q[i] > q[i + 2] && q[i] > q[i + 3]) {
+      return console.log('Too chaotic');
     }
-  }
 
-  let total = 0;
-  let isChaos = false;
-  for (let [key, value] of Object.entries(bribes)) {
-    total+= value;
-    if (value > 2) {
-      isChaos = true;
+    if (q[i] > i + 1) {
+      bribes++;
     }
-  }
 
-  if (isChaos) {
-    console.log('Too chaotic');
-  } else {
-    console.log(total)
-  }
+    if (q[i] > i + 2) {
+      bribes++;
+    }
+  };
+
+  console.log(bribes);
+
+  // const bribes = {};
+  // let sorting = true;
+  // while (sorting) {
+  //   sorting = false;
+  //   for (let i = 0; i < q.length - 1; i++) {
+  //     if (q[i] > q[i + 1]) {
+  //       sorting = true;
+  //       if (!bribes[q[i]]) {
+  //         bribes[q[i]] = 1;
+  //       } else {
+  //         bribes[q[i]]++;
+  //       }
+
+  //       [q[i], q[i + 1]] = [q[i + 1], q[i]];
+  //     }
+  //   }
+  // }
+
+  // let total = 0;
+  // let isChaos = false;
+  // for (let [key, value] of Object.entries(bribes)) {
+  //   total+= value;
+  //   if (value > 2) {
+  //     isChaos = true;
+  //   }
+  // }
+
+  // if (isChaos) {
+  //   console.log('Too chaotic');
+  // } else {
+  //   console.log(total)
+  // }
 }
+
+minBribes([2,3,5,1,4])
 
 module.exports = minBribes;
