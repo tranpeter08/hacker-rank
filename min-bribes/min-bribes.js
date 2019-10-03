@@ -1,38 +1,23 @@
 function minBribes(q) {
-  const bribes = {};
+  let bribes = 0;
   let sorting = true;
   while (sorting) {
     sorting = false;
     for (let i = 0; i < q.length - 1; i++) {
+      if (q[i] - (i + 1) > 2) {
+        return console.log('Too chaotic');
+      }
+
       if (q[i] > q[i + 1]) {
         sorting = true;
-        if (!bribes[q[i]]) {
-          bribes[q[i]] = 1;
-        } else {
-          bribes[q[i]]++;
-        }
+        bribes++;
 
         [q[i], q[i + 1]] = [q[i + 1], q[i]];
       }
     }
   }
 
-  let total = 0;
-  let isChaos = false;
-  for (let [key, value] of Object.entries(bribes)) {
-    total+= value;
-    if (value > 2) {
-      isChaos = true;
-    }
-  }
-
-  if (isChaos) {
-    console.log('Too chaotic');
-  } else {
-    console.log(total)
-  }
+  console.log(bribes);
 }
-
-minBribes([1, 2, 5, 3, 7, 8, 6, 4])
 
 module.exports = minBribes;
